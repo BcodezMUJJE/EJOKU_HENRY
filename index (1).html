@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Sounds of the Hertz | KZ EDX Pro X</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --orange: #f45b25;
+      --peach: #f8cdbb;
+      --black: #090909;
+      --navbar-height: 100px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #fff;
+      color: var(--black);
+      font-family: "Montserrat", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* --- Navbar Alignment --- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      width: 100%;
+      min-height: var(--navbar-height);
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(16px, 2.4vw, 36px);
+      padding: 12px clamp(24px, 5.5vw, 88px);
+      background: #fff;
+      box-shadow: 0 1px 0 rgba(9, 9, 9, .06);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      width: 170px;
+      height: 78px;
+    }
+
+    .logo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(6px, 1vw, 18px);
+    }
+
+    .nav-links a {
+      padding: 10px 12px;
+      border-radius: 20px;
+      color: var(--orange);
+      font-size: clamp(10px, .82vw, 12px);
+      font-weight: 800;
+      letter-spacing: .025em;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .nav-links a:hover {
+      background: #fff1eb;
+    }
+
+    .nav-links a.active {
+      background: #fce4d9;
+      color: #c94113;
+    }
+
+    .shop-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 12px 20px;
+      border-radius: 30px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    .shop-btn:hover {
+      transform: translateY(-2px);
+      background: #d94b19;
+      box-shadow: 0 5px 12px rgba(244, 91, 37, .22);
+    }
+
+    .menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--orange);
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+      transition: background .2s ease;
+    }
+
+    .menu-btn:hover {
+      background: #fff1eb;
+    }
+
+    .navbar a:focus-visible,
+    .menu-btn:focus-visible {
+      outline: 3px solid rgba(244, 91, 37, .45);
+      outline-offset: 3px;
+    }
+
+    /* --- Hero Section Alignment --- */
+    .hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      min-height: calc(100vh - var(--navbar-height));
+      overflow: hidden;
+      padding: 40px 5% 80px;
+    }
+
+    .background-type {
+      position: absolute;
+      z-index: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: clamp(40px, 8vw, 115px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .background-type span {
+      display: block;
+      color: var(--peach);
+      font-size: clamp(80px, 16vw, 205px);
+      font-weight: 900;
+      letter-spacing: -.085em;
+      line-height: .82;
+      opacity: .94;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .background-type span:nth-child(2) {
+      opacity: .38;
+    }
+
+    .background-type span:nth-child(3) {
+      opacity: .19;
+    }
+
+    .product-area {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      width: min(750px, 75vw);
+      height: clamp(450px, 50vw, 750px);
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .product-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .hero-caption {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 920px;
+      margin-top: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-caption h1 {
+      color: var(--orange);
+      font-size: clamp(36px, 5.5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -.065em;
+      line-height: 1.05;
+    }
+
+    .hero-caption h1 span {
+      font-size: .68em;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+
+    .description {
+      max-width: 850px;
+      margin: 14px auto 0;
+      font-size: clamp(13px, 1.5vw, 18px);
+      font-weight: 500;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .business-name {
+      margin-top: 14px;
+      font-size: clamp(22px, 2.8vw, 35px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+    }
+
+    .business-name span {
+      color: var(--orange);
+    }
+
+    .management {
+      margin-top: 10px;
+      color: transparent;
+      font-size: clamp(18px, 2.2vw, 27px);
+      font-weight: 900;
+      letter-spacing: .5px;
+      -webkit-text-stroke: 1.4px var(--orange);
+    }
+
+    /* --- Responsive Media Queries --- */
+    @media (max-width: 850px) {
+      :root {
+        --navbar-height: 82px;
+      }
+
+      .navbar {
+        padding: 10px 4%;
+      }
+
+      .logo {
+        width: 140px;
+        height: 66px;
+      }
+
+      .menu-btn {
+        display: flex;
+        margin-left: auto;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: var(--navbar-height);
+        right: 4%;
+        left: auto;
+        display: none;
+        width: min(340px, 92vw);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 12px;
+        border: 1px solid rgba(9, 9, 9, .06);
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 16px 36px rgba(9, 9, 9, .12);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 14px;
+        font-size: 12px;
+        text-align: left;
+      }
+
+      .shop-btn {
+        padding: 11px 16px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      :root {
+        --navbar-height: 76px;
+      }
+
+      .navbar {
+        gap: 12px;
+        padding: 10px 16px;
+      }
+
+      .logo {
+        width: 116px;
+        height: 58px;
+      }
+
+      .shop-btn {
+        padding: 10px 13px;
+        font-size: 10px;
+      }
+
+      .hero {
+        padding: 30px 16px 60px;
+      }
+
+      .product-area {
+        width: 100%;
+        height: 380px;
+      }
+
+      .hero-caption {
+        margin-top: 12px;
+      }
+
+      .hero-caption h1 {
+        font-size: 32px;
+      }
+
+      .hero-caption h1 span {
+        display: block;
+        margin-top: 3px;
+        font-size: .72em;
+      }
+
+      .description {
+        max-width: 100%;
+        font-size: 13px;
+      }
+
+      .business-name {
+        font-size: 22px;
+      }
+
+      .management {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="#overview" class="logo" aria-label="Sounds of the Hertz home">
+      <img src="images/logo/back.png" alt="Sounds of the Hertz">
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a class="active" href="#overview">Overview</a>
+      <a href="#features">Features</a>
+      <a href="#technology">Technology</a>
+      <a href="#design">Design</a>
+      <a href="#review">Review</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+
+    <a href="#pricing" class="shop-btn">Shop now</a>
+  </header>
+
+  <main>
+    <section class="hero" id="overview">
+      <div class="background-type" aria-hidden="true">
+        <span>EDX PRO X</span>
+        <span>EDX PRO X</span>
+        <span>EDX PRO X</span>
+      </div>
+
+      <div class="product-area">
+        <img
+          src="images/back.png"
+          alt="KZ in-ear monitors with transparent teal housings and silver cables"
+          class="product-image"
+          width="800"
+          height="800"
+        >
+      </div>
+
+      <div class="hero-caption">
+        <h1>KZ IN-EARS <span>In all series</span></h1>
+        <p class="description">
+          KZ IEMs for musicians. For your live-band and sound-engineering work,<br>
+          IEMs can be useful for monitoring.
+        </p>
+        <h2 class="business-name">SOUNDS OF THE <span>HERTZ</span></h2>
+        <p class="management">MANAGEMENT</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      const opened = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(opened));
+      menuBtn.setAttribute('aria-label', opened ? 'Close navigation' : 'Open navigation');
+      menuBtn.textContent = opened ? '✕' : '☰';
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Open navigation');
+        menuBtn.textContent = '☰';
+      });
+    });
+  </script>
+</body>
+</html>
